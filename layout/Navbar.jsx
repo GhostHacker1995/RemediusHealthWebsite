@@ -13,15 +13,17 @@ export default function Navbar() {
         <div className="max-w-7xl mx-5 sm:mx-20 mt-4 bg-white rounded-full px-2 sm:px-2 py-1 sm:py-2 flex items-center justify-between shadow-none">
           {/* Left: Logo */}
           <div className="flex items-center gap-2 sm:gap-3">
-            <div className="relative w-40 h-15 sm:w-[180px] sm:h-[60px]">
-              <Image
-                src="/img/Logos/RemediusMobileLogo.svg"
-                alt="Remedius Logo"
-                fill
-                sizes="(max-width: 640px) 96px, 150px"
-                className="object-contain"
-              />
-            </div>
+            <Link href="/">
+              <div className="relative w-40 h-15 sm:w-[180px] sm:h-[60px]">
+                <Image
+                  src="/img/Logos/RemediusMobileLogo.svg"
+                  alt="Remedius Logo"
+                  fill
+                  sizes="(max-width: 640px) 96px, 150px"
+                  className="object-contain"
+                />
+              </div>
+            </Link>
           </div>
 
           {/* Center: Nav Links */}
@@ -62,7 +64,7 @@ export default function Navbar() {
               </li>
               <li>
                 <Link
-                  href="/products"
+                  href="/ailab"
                   className="hover:text-[#0e6077] text-[18px]"
                   onClick={() => setMenuOpen(false)}
                 >
