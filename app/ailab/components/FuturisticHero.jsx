@@ -60,6 +60,7 @@ export default function FuturisticHero() {
           </span>{" "}
           <span className="text-[#F9A01B]"> AI</span>Lab
         </h1>
+        <h4>AI for Medical Health</h4>
         <p className="mt-6 text-gray-300 text-base md:text-lg">
           Remedius AILab is the innovation branch of Remedius, focused on
           applying Artificial Intelligence (AI), Machine Learning (ML), and Data

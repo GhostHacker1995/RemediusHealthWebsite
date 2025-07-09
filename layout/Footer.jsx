@@ -121,7 +121,7 @@ export default function RemediusFooter() {
         </div>
 
         {/* Stay Connected */}
-        <div className="rounded-lg p-5  flex flex-col gap-3">
+        <div className="flex flex-col gap-3">
           <h5 className="font-semibold mb-3 text-white/90 flex items-center gap-2">
             <span>Stay Connected</span>
           </h5>
@@ -144,7 +144,7 @@ export default function RemediusFooter() {
             <li className="flex items-center gap-2">
               <FaPhone className="text-lg" />
               <a href="tel:+256758553488" className="hover:underline">
-                +256 760 207 718
+                +256 758 553 488
               </a>
             </li>
             <li className="flex items-center gap-2">
