@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 export default function FuturisticHero() {
   return (
-    <section className="relative w-full min-h-[90vh] bg-black overflow-hidden text-white flex items-center justify-center px-4 py-24">
+    <section className="relative w-full min-h-[90vh] bg-black overflow-hidden text-white flex items-center justify-center px-4 py-24 pt-45">
       {/* Animated Background */}
       <motion.div
         className="absolute inset-0 w-full h-full z-0"
