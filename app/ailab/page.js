@@ -5,6 +5,8 @@ import AboutUsSection from "./components/About";
 import WhyWeMatter from "./components/WhyWeMatter";
 import AIBootcampSection from "./components/Bootcamp";
 import CallToActionSection from "./components/CallToAction";
+import CollaborateSupport from "./components/CollaborateSupport";
+import CollaborationBanner from "./components/CollaborationBanner";
 
 function page() {
   return (
@@ -15,6 +17,8 @@ function page() {
       <WhyWeMatter />
       <AIBootcampSection />
       <CallToActionSection />
+      <CollaborationBanner />
+      <CollaborateSupport />
     </div>
   );
 }

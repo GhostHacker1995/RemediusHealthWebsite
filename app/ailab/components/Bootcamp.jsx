@@ -62,7 +62,7 @@ const technologies = [
 
 export default function AIBootcampSection() {
   return (
-    <section className="bg-white py-20 px-4">
+    <section className="bg-white py-20 px-4 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -90,7 +90,7 @@ export default function AIBootcampSection() {
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3, duration: 0.6 }}
-            className="bg-gradient-to-br from-blue-50 to-indigo-50 p-8 rounded-2xl shadow-lg border border-blue-100 hover:shadow-xl transition-all duration-300"
+            className="bg-gradient-to-br from-blue-50 to-indigo-50 p-8 rounded-2xl shadow-lg border border-blue-100 hover:shadow-xl transition-all duration-300 overflow-hidden"
           >
             <div className="flex items-center mb-6">
               <div className="bg-blue-500 p-3 rounded-full mr-4">
@@ -153,7 +153,7 @@ export default function AIBootcampSection() {
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
-            className="bg-gradient-to-br from-green-50 to-emerald-50 p-8 rounded-2xl shadow-lg border border-green-100 hover:shadow-xl transition-all duration-300"
+            className="bg-gradient-to-br from-green-50 to-emerald-50 p-8 rounded-2xl shadow-lg border border-green-100 hover:shadow-xl transition-all duration-300 overflow-hidden"
           >
             <div className="flex items-center mb-6">
               <div className="bg-green-500 p-3 rounded-full mr-4">
@@ -274,7 +274,7 @@ export default function AIBootcampSection() {
             {technologies.map((tech, i) => (
               <div
                 key={i}
-                className="flex flex-col items-center text-center p-4 bg-gray-50 rounded-xl shadow-sm hover:shadow-md hover:bg-white transition"
+                className="flex flex-col items-center text-center p-4 bg-gray-50 rounded-xl shadow-sm hover:shadow-md hover:bg-white transition overflow-hidden"
               >
                 {tech.icon}
                 <span className="mt-2 text-sm font-medium text-gray-700">

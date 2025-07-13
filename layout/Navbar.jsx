@@ -80,6 +80,15 @@ export default function Navbar() {
                   About Us
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/careers"
+                  className="hover:text-[#0e6077] text-[18px]"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  Careers
+                </Link>
+              </li>
               <li className="block sm:hidden w-full">
                 <Link
                   href="/contact"

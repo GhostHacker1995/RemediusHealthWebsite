@@ -44,27 +44,126 @@ export default function CallToActionSection() {
               className="w-full border text-gray-950 border-gray-300 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
+            <input
+              type="text"
+              placeholder="Phone Number"
+              className="w-full border text-gray-950 border-gray-300 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
+            />
+            <input
+              type="text"
+              placeholder="Country & City"
+              className="w-full border text-gray-950 border-gray-300 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
+            />
           </div>
+
+          <select
+            className="w-full border text-gray-950 border-gray-300 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            required
+          >
+            <option value="">Current Profession</option>
+            <option value="Medical Doctor">Medical Doctor</option>
+            <option value="Nurse">Nurse</option>
+            <option value="Midwife">Midwife</option>
+            <option value="Specialist">Specialist</option>
+            <option value="Software Engineer">Software Engineer</option>
+            <option value="Student">Student</option>
+          </select>
 
           <input
             type="text"
-            placeholder="Your Background (e.g., Med Student, Data Scientist)"
+            placeholder="Organization / Institution (optional)"
             className="w-full border text-gray-950 border-gray-300 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            required
           />
+
+          <fieldset className="space-y-2">
+            <legend className="text-gray-950">Area of Interest</legend>
+            <div className="flex flex-wrap text-gray-950 gap-4">
+              <label className="flex items-center text-gray-950 space-x-2">
+                <input type="checkbox" value="Python for Health Data" />
+                <span>Python for Health Data</span>
+              </label>
+              <label className="flex items-center text-gray-950 space-x-2">
+                <input
+                  type="checkbox"
+                  value="Machine Learning & Deep Learning"
+                />
+                <span>Machine Learning & Deep Learning</span>
+              </label>
+              <label className="flex items-center text-gray-950 space-x-2">
+                <input type="checkbox" value="Medical AI" />
+                <span>Medical AI</span>
+              </label>
+              <label className="flex items-center text-gray-950 space-x-2">
+                <input type="checkbox" value="Data Visualization" />
+                <span>Data Visualization</span>
+              </label>
+              <label className="flex items-center text-gray-950 space-x-2">
+                <input type="checkbox" value="Other" />
+                <span>Other</span>
+              </label>
+              <input
+                type="text"
+                placeholder="Specify Other"
+                className="w-full border text-gray-950 border-gray-300 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+          </fieldset>
+
+          <fieldset className="space-y-2">
+            <legend className="text-gray-950">
+              Do you have any prior experience in coding or data science?
+            </legend>
+            <div className="flex items-center space-x-4">
+              <label className="flex items-center text-gray-950 space-x-2">
+                <input type="radio" name="experience" value="Yes" />
+                <span>Yes</span>
+              </label>
+              <label className="flex items-center text-gray-950 space-x-2">
+                <input type="radio" name="experience" value="No" />
+                <span>No</span>
+              </label>
+            </div>
+            <textarea
+              rows="4"
+              placeholder="Briefly describe your experience (optional)"
+              className="w-full border text-gray-950 border-gray-300 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            ></textarea>
+          </fieldset>
 
           <textarea
             rows="4"
-            placeholder="Tell us why you're interested"
+            placeholder="Why do you want to join this bootcamp? (2–4 sentences)"
             className="w-full border text-gray-950 border-gray-300 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
             required
           ></textarea>
+
+          <select
+            className="w-full border text-gray-950 border-gray-300 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            required
+          >
+            <option value="">How did you hear about Remedius AILab?</option>
+            <option value="Social media">Social media</option>
+            <option value="Friend/relative">Friend/relative</option>
+            <option value="Alumni">Alumni</option>
+            <option value="Remedius Website">Remedius Website</option>
+            <option value="Google">Google</option>
+            <option value="Other">Other</option>
+          </select>
+
+          <label className="flex items-center text-gray-950 space-x-2">
+            <input type="checkbox" required />
+            <span>
+              I agree to be contacted and receive updates from Remedius AILab.
+            </span>
+          </label>
 
           <button
             type="submit"
             className="w-full bg-[#0e6077] hover:bg-[#094b5b] text-white font-semibold py-3 rounded-md transition"
           >
-            Register Now
+            APPLY TO JOIN BOOTCAMP
           </button>
         </motion.form>
       </div>
