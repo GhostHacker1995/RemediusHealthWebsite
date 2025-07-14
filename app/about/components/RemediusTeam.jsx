@@ -12,21 +12,21 @@ const team = [
   },
   {
     name: "Dr. Tayebwa Chrispus",
-    title: "Co-Founder, Chief Operations Officer",
+    title: "Co-Founder, COO",
     image: "/img/team/Chirs.png",
     description:
       "Dr. Tayebwa Chrispus is a renowned healthcare professional with a passion for patient-centered care. With years of experience, Dr. Tayebwa has dedicated his career to finding new and innovative ways to improve the quality of healthcare services available to patients across Uganda. As the co-founder of Remedius Mobile Health, Dr. Tayebwa has been instrumental in the development and implementation of cutting-edge telemedicine and digital health solutions.",
   },
   {
     name: "Dr. Ahabwe Rachel",
-    title: "Co-Founder, Chief Administrative Officer",
+    title: "Co-Founder, CAO",
     image: "/img/team/rachel.png",
     description:
       "Dr. Ahabwe Rachel is a medical doctor by profession & entrepreneur. She holds a Bachelor’s Degree in Medicine and Surgery from Makerere University and Bachelor's Degree in biomedical sciences from the same university .She is currently the Chief Administrative Officer of Remedius Mobile health and a practicing general practitioner at the same digital clinic.",
   },
   {
     name: "Dr. Soro David",
-    title: "Co-Founder, Chief Technology Officer",
+    title: "Co-Founder, CTO",
     image: "/img/team/Soro.png",
     description:
       "Dr. Soro David is licensed medical doctor with over two years’ experience offering healthcare to the communities of south-western Uganda. He is passionate about leveraging digital health technologies to achieve universal health coverage in Africa. He holds a Bachelor’s Degree in Medicine and Surgery from Gulu University.",
@@ -74,21 +74,23 @@ export default function TeamCardLayout() {
         {team.map((member, index) => (
           <div
             key={index}
-            className="bg-white shadow-lg rounded-lg text-center transition-transform hover:scale-105 rounded-br-[80px]"
+            className={`bg-white shadow-lg rounded-lg text-center transition-transform hover:scale-105 rounded-br-[80px] overflow-hidden ${
+              expandedMember === index ? "h-auto" : "h-[480px]"
+            }`}
           >
             <div className="relative overflow-hidden h-60 mx-auto">
               <Image
                 src={member.image}
                 alt={member.name}
-                width={120}
-                height={70}
+                width={300}
+                height={300}
                 className="object-cover w-full h-full rounded-br-[80px]"
               />
             </div>
-            <h3 className="mt-4 text-xl font-bold text-gray-800 px-2">
+            <h6 className="mt-4 text-xl font-bold text-gray-800 px-2">
               {member.name}
-            </h3>
-            <p className="text-sm text-blue-600 font-medium px-2">
+            </h6>
+            <p className="text-sm text-[#149099] font-medium px-2">
               {member.title}
             </p>
             <p className="mt-2 text-gray-600 text-sm text-left p-4">
@@ -98,7 +100,7 @@ export default function TeamCardLayout() {
             </p>
             {expandedMember !== index && (
               <button
-                className="mb-2 text-blue-500 text-sm font-semibold underline hover:text-blue-700 transition-colors text-center"
+                className="mb-2 px-4 py-2 bg-[#149099] text-white text-sm font-semibold rounded hover:bg-[#0f6d6d] transition-colors"
                 onClick={() => setExpandedMember(index)}
               >
                 Show More
@@ -106,7 +108,7 @@ export default function TeamCardLayout() {
             )}
             {expandedMember === index && (
               <button
-                className="mt-2 text-blue-500 text-sm font-semibold underline hover:text-blue-700 transition-colors"
+                className="mt-4 px-2 py-2 mb-4 bg-[#149099] text-white text-sm font-semibold rounded hover:bg-[#0f6d6d] transition-colors"
                 onClick={() => setExpandedMember(null)}
               >
                 Show Less
@@ -142,7 +144,7 @@ export default function TeamCardLayout() {
               {selectedMember.description}
             </p>
             <button
-              className="mt-4 text-blue-500 text-sm font-semibold underline hover:text-blue-700 transition-colors"
+              className="mt-2 text-blue-500 text-sm font-semibold underline hover:text-blue-700 transition-colors"
               onClick={() => setSelectedMember(null)}
             >
               Close

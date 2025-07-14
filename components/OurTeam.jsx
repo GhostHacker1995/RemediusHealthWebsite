@@ -162,9 +162,9 @@ export default function OurTeam() {
                     className="object-cover rounded-2xl"
                   />
                   <div className="absolute bottom-0 bg-white/90 px-4 py-3 text-center w-full">
-                    <h3 className="font-semibold text-gray-800 text-lg">
+                    <h6 className="font-normal text-gray-800 text-lg">
                       {member.name}
-                    </h3>
+                    </h6>
                     <p className="text-sm text-gray-500">
                       {member.roles.join(", ")}
                     </p>

@@ -2,6 +2,7 @@
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
 export default function CorporateSocialResponsibility() {
   useEffect(() => {
@@ -17,26 +18,31 @@ export default function CorporateSocialResponsibility() {
       title: "Healthcare Accessibility",
       description:
         "We collaborate with local organizations and government entities to extend quality healthcare services to underserved communities. By offering subsidized telemedicine services and health education programs, we empower individuals and communities to take control of their health.",
+      icon: "fa-solid fa-hospital",
     },
     {
       title: "Education and Skill Development",
       description:
         "Remedius supports educational programs that focus on healthcare and technology. We provide opportunities for students and young professionals to gain experience through internships, scholarships, and mentorship programs.",
+      icon: "fa-solid fa-graduation-cap",
     },
     {
       title: "Environmental Sustainability",
       description:
         "We strive to minimize our environmental impact by promoting eco-friendly practices within our organization and encouraging the adoption of sustainable healthcare solutions.",
+      icon: "fa-solid fa-leaf",
     },
     {
       title: "Community Engagement",
       description:
         "We actively participate in community-building activities, health campaigns, and partnerships with local organizations to raise awareness about health issues and promote overall well-being.",
+      icon: "fa-solid fa-users",
     },
     {
       title: "Employee Volunteerism",
       description:
         "Remedius encourages our employees to give back to their communities through volunteerism. We organize company-wide volunteer events and support individual volunteering efforts, fostering a culture of compassion and social responsibility.",
+      icon: "fa-solid fa-hands-helping",
     },
   ];
 
@@ -60,6 +66,9 @@ export default function CorporateSocialResponsibility() {
               className="bg-gradient-to-br from-[#1e1e1e] to-[#2c2c2c] p-6 rounded-xl shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-xl text-left w-full max-w-sm"
               data-aos="fade-up"
             >
+              <div className="text-[#faa11b] text-4xl mb-3">
+                <i className={item.icon}></i>
+              </div>
               <h3 className="text-xl font-semibold mb-3 uppercase text-white tracking-wide">
                 {item.title}
               </h3>
