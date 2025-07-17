@@ -10,7 +10,7 @@ export default function Navbar() {
   return (
     <>
       <nav className="px-0 sm:px-0 py-0 fixed top-0 left-0 w-full z-50 bg-transparent m-auto">
-        <div className="max-w-7xl mx-5 sm:mx-20 mt-4 bg-white rounded-full px-2 sm:px-2 py-1 sm:py-2 flex items-center justify-between shadow-none">
+        <div className="max-w-7xl mx-5 md:mx-20 xl:mx-auto mt-4 bg-white rounded-full px-2 sm:px-2 py-1 sm:py-2 flex items-center justify-between shadow-none">
           {/* Left: Logo */}
           <div className="flex items-center gap-2 sm:gap-3">
             <Link href="/">

@@ -3,6 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const services = [
   {
@@ -28,6 +30,12 @@ export default function HeroSection() {
 
   // Auto-scroll effect
   useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      easing: "ease-in-out",
+      once: true,
+    });
+
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % services.length);
     }, 3000);
@@ -63,22 +71,36 @@ export default function HeroSection() {
       </div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-4 text-center">
-        <h1 className="text-4xl font-bold text-gray-900 mb-12">
+        <h1
+          className="text-4xl font-bold text-gray-900 mb-12"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
           HealthCare that follows you <br />
           wherever you go
         </h1>
 
-        <div className="relative flex items-center justify-center">
+        <div
+          className="relative flex items-center justify-center"
+          data-aos="fade-up"
+          data-aos-delay="300"
+        >
           {/* Left arrow */}
           <button
             onClick={prevSlide}
-            className="absolute left-0 p-2 rounded-full bg-white shadow hover:bg-gray-100 z-20"
+            className="absolute left-0 p-2 rounded-full text-gray-950 font-black bg-white shadow hover:bg-gray-100 z-20"
+            data-aos="fade-right"
+            data-aos-delay="500"
           >
             &#8592;
           </button>
 
           {/* Service Cards (animated row) */}
-          <div className="overflow-hidden w-[900px]">
+          <div
+            className="overflow-hidden w-[900px]"
+            data-aos="zoom-in"
+            data-aos-delay="400"
+          >
             {" "}
             {/* 3*288px = 864px, a bit more for gap */}
             <div
@@ -121,14 +143,20 @@ export default function HeroSection() {
           {/* Right arrow */}
           <button
             onClick={nextSlide}
-            className="absolute right-0 p-2 rounded-full bg-white shadow hover:bg-gray-100 z-20"
+            className="absolute right-0 p-2 rounded-full text-gray-950 font-black bg-white shadow hover:bg-gray-100 z-20"
+            data-aos="fade-left"
+            data-aos-delay="500"
           >
             &#8594;
           </button>
         </div>
 
         {/* Bottom indicators */}
-        <div className="mt-6 flex justify-center gap-2">
+        <div
+          className="mt-6 flex justify-center gap-2"
+          data-aos="fade-up"
+          data-aos-delay="600"
+        >
           {services.map((_, idx) => (
             <button
               key={idx}
@@ -153,6 +181,8 @@ export default function HeroSection() {
           onMouseOut={(e) =>
             (e.currentTarget.style.backgroundColor = "#145c78")
           }
+          data-aos="fade-up"
+          data-aos-delay="700"
         >
           See all services
         </Link>

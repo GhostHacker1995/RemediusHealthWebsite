@@ -2,6 +2,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const features = [
   {
@@ -51,6 +54,15 @@ const features = [
 ];
 
 export default function EcoSystem() {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      easing: "ease-in-out",
+      once: true,
+      offset: 100,
+    });
+  }, []);
+
   return (
     <section className="bg-[#eaf7f4] py-12 px-4 min-h-[60vh] flex flex-col items-center justify-center">
       <div className="max-w-7xl w-full mx-auto flex flex-col gap-16">
@@ -80,9 +92,9 @@ export default function EcoSystem() {
                   }}
                 />
                 <div className="relative z-10 flex flex-col items-center text-center max-w-3xl mx-auto">
-                  <h1 className="text-3xl md:text-5xl font-extrabold text-white mb-4 leading-tight">
+                  <h2 className="text-4xl md:text-2xl font-bold text-[#fff]">
                     {feature.title}
-                  </h1>
+                  </h2>
                   <p className="text-lg md:text-xl text-gray-200 mb-4">
                     {feature.description}
                   </p>
@@ -128,12 +140,18 @@ export default function EcoSystem() {
             <div
               key={feature.title}
               className={`flex flex-col md:flex-row items-center gap-12 rounded-3xl shadow-lg bg-white/80 p-8 ${flexDir}`}
+              data-aos="fade-up"
+              data-aos-delay={idx * 100}
             >
               {/* Left: Text Content */}
-              <div className="flex-1 flex flex-col items-start gap-6">
-                <h1 className="text-4xl md:text-5xl font-extrabold text-gray-800 leading-tight mb-2">
+              <div
+                className="flex-1 flex flex-col items-start gap-6"
+                data-aos="fade-right"
+                data-aos-delay={idx * 100 + 200}
+              >
+                <h2 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-2">
                   {feature.title}
-                </h1>
+                </h2>
                 <p className="text-lg text-gray-700 mb-2">
                   {feature.description}
                 </p>
@@ -145,7 +163,11 @@ export default function EcoSystem() {
                 </Link>
               </div>
               {/* Right: Image */}
-              <div className="flex-1 flex justify-center items-center">
+              <div
+                className="flex-1 flex justify-center items-center"
+                data-aos="fade-left"
+                data-aos-delay={idx * 100 + 400}
+              >
                 <div className="rounded-2xl overflow-hidden shadow-xl bg-white p-2">
                   <Image
                     src={feature.image}
