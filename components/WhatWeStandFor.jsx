@@ -24,7 +24,7 @@ export default function WhatWeStandFor() {
         data-aos-delay="100"
       >
         <span className="text-[#faa11b]">Empower your health,</span> Transform
-        your life – Discover Remedius, <br /> a gateway to complete well-being
+        your life <br /> Discover Remedius, a gateway to complete well-being
         with Telemedicine
       </h3>
       <div className="max-w-7xl mx-auto px-4 flex flex-col lg:flex-row gap-10 items-center">
@@ -179,7 +179,7 @@ export default function WhatWeStandFor() {
 
         {/* Right Image */}
         <div
-          className="lg:w-1/2 relative rounded-xl overflow-hidden shadow-md flex justify-center items-center"
+          className="lg:w-1/2 relative rounded-xl overflow-hidden flex justify-center items-center"
           data-aos="fade-left"
           data-aos-delay="300"
         >

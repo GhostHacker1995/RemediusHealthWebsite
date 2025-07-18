@@ -1,69 +1,41 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useEffect, useRef } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
 
 const team = [
   {
-    name: "Dr. Ahabwe Rachel",
-    roles: ["OB/GYN", "Preventive Care"],
+    name: "Dr. Mwebembezi Joshua",
+    title: "Founder & C.E.O",
+    image: "/img/team/joshua.png",
     description:
-      "Dr. Rachel specializes in women's health and preventive medical programs with over 10 years of experience.",
-    image: "/img/team/Dr. Ahabwe Rachel.JPG",
-  },
-  {
-    name: "Dr. Ayikoru",
-    roles: ["Pediatrics", "Family Medicine"],
-    description:
-      "Dr. Ayikoru is a compassionate pediatrician focused on child wellness and holistic family care.",
-    image: "/img/team/Dr. Ayikoru.JPG",
-  },
-  {
-    name: "Dr. Soro",
-    roles: ["Cardiology", "Chronic Care"],
-    description:
-      "An experienced cardiologist improving outcomes for chronic patients through tech-enabled care.",
-    image: "/img/team/Dr. Soro.JPG",
+      "Dr. Mwebembezi Joshua is a licensed medical professional with experience in the healthcare industry. With a background in general medicine, software engineering, and artificial intelligence, he is passionate about making healthcare more accessible. Dr. Mwebembezi has developed innovative, AI-driven solutions to challenges faced by patients and providers. As founder of Remedius Mobile Health, he is committed to advancing telemedicine and digital health technologies across the region.",
   },
   {
     name: "Dr. Tayebwa Chrispus",
-    roles: ["Mental Health", "Telemedicine"],
+    title: "Co-Founder, COO",
+    image: "/img/team/Chirs.png",
     description:
-      "Focused on mental health access and remote psychiatric support in underserved regions.",
-    image: "/img/team/Dr. Tayebwa Chrispus.JPG",
+      "Dr. Tayebwa Chrispus is a renowned healthcare professional with a passion for patient-centered care. With years of experience, Dr. Tayebwa has dedicated his career to finding new and innovative ways to improve the quality of healthcare services available to patients across Uganda. As the co-founder of Remedius Mobile Health, Dr. Tayebwa has been instrumental in the development and implementation of cutting-edge telemedicine and digital health solutions.",
   },
   {
-    name: "Dr. Twanza",
-    roles: ["Nutrition", "Community Care"],
+    name: "Dr. Ahabwe Rachel",
+    title: "Co-Founder, CAO",
+    image: "/img/team/rachel.png",
     description:
-      "Community-based nutritionist driving impact through food security and local outreach.",
-    image: "/img/team/Dr. Twanza.JPG",
+      "Dr. Ahabwe Rachel is a medical doctor by profession & entrepreneur. She holds a Bachelor's Degree in Medicine and Surgery from Makerere University and Bachelor's Degree in biomedical sciences from the same university .She is currently the Chief Administrative Officer of Remedius Mobile health and a practicing general practitioner at the same digital clinic.",
   },
   {
-    name: "Dr. Mwebembezi",
-    roles: ["General Medicine"],
+    name: "Dr. Soro David",
+    title: "Co-Founder, CTO",
+    image: "/img/team/Soro.png",
     description:
-      "General practitioner supporting primary care and mobile clinic initiatives.",
-    image: "/img/team/Dr.Mwebembezi.JPG",
+      "Dr. Soro David is licensed medical doctor with over two years' experience offering healthcare to the communities of south-western Uganda. He is passionate about leveraging digital health technologies to achieve universal health coverage in Africa. He holds a Bachelor's Degree in Medicine and Surgery from Gulu University.",
   },
 ];
 
 export default function OurTeam() {
-  const [flippedIndex, setFlippedIndex] = useState(null);
   const scrollContainerRef = useRef(null);
-
-  const handleMouseEnter = (index) => {
-    setFlippedIndex(index);
-  };
-
-  const handleMouseLeave = () => {
-    setFlippedIndex(null);
-  };
-
-  const handleCardClick = (index) => {
-    setFlippedIndex(flippedIndex === index ? null : index);
-  };
 
   useEffect(() => {
     const scrollContainer = scrollContainerRef.current;
@@ -113,9 +85,6 @@ export default function OurTeam() {
           <h2 className="text-4xl font-bold text-gray-900">Meet our team</h2>
           <p className="text-gray-600 max-w-xl mx-auto mt-2">
             Our dedicated professionals are the heart of Remedius.
-            <span className="block mt-1 text-sm text-gray-500">
-              💡 Tap or hover on cards to learn more about each team member
-            </span>
           </p>
         </div>
 
@@ -127,34 +96,10 @@ export default function OurTeam() {
           {team.map((member, index) => (
             <div
               key={`first-${index}`}
-              onMouseEnter={() => handleMouseEnter(index)}
-              onMouseLeave={handleMouseLeave}
-              onClick={() => handleCardClick(index)}
-              className="flex-shrink-0 w-[280px] [perspective:1000px] cursor-pointer group relative"
+              className="flex-shrink-0 w-[280px] cursor-pointer group relative"
             >
-              {/* Flip indicator */}
-              <div className="absolute top-2 right-2 z-20 bg-white/80 rounded-full p-1 shadow-md group-hover:bg-white/100 transition-all">
-                <svg
-                  className="w-4 h-4 text-gray-600"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"
-                  />
-                </svg>
-              </div>
-              <div
-                className={`relative w-full h-[360px] rounded-2xl shadow-xl transition-transform duration-700 [transform-style:preserve-3d] ${
-                  flippedIndex === index ? "rotate-y-180" : ""
-                }`}
-              >
-                {/* Front */}
-                <div className="absolute inset-0 bg-white rounded-2xl overflow-hidden [backface-visibility:hidden]">
+              <div className="relative w-full h-[360px] rounded-2xl shadow-xl">
+                <div className="bg-white rounded-2xl overflow-hidden h-full">
                   <Image
                     src={member.image}
                     alt={member.name}
@@ -165,23 +110,8 @@ export default function OurTeam() {
                     <h6 className="font-normal text-gray-800 text-lg">
                       {member.name}
                     </h6>
-                    <p className="text-sm text-gray-500">
-                      {member.roles.join(", ")}
-                    </p>
+                    <p className="text-sm text-gray-500">{member.title}</p>
                   </div>
-                </div>
-
-                {/* Back */}
-                <div className="absolute inset-0 bg-white rounded-2xl px-5 py-6 text-center flex flex-col justify-center items-center [transform:rotateY(180deg)] [backface-visibility:hidden]">
-                  <h3 className="font-semibold text-gray-800 text-lg mb-2">
-                    {member.name}
-                  </h3>
-                  <p className="text-sm text-gray-600 mb-4">
-                    {member.description}
-                  </p>
-                  <p className="text-xs text-gray-400">
-                    {member.roles.join(", ")}
-                  </p>
                 </div>
               </div>
             </div>
@@ -190,34 +120,10 @@ export default function OurTeam() {
           {team.map((member, index) => (
             <div
               key={`second-${index}`}
-              onMouseEnter={() => handleMouseEnter(index + team.length)}
-              onMouseLeave={handleMouseLeave}
-              onClick={() => handleCardClick(index + team.length)}
-              className="flex-shrink-0 w-[280px] [perspective:1000px] cursor-pointer group relative"
+              className="flex-shrink-0 w-[280px] cursor-pointer group relative"
             >
-              {/* Flip indicator */}
-              <div className="absolute top-2 right-2 z-20 bg-white/80 rounded-full p-1 shadow-md group-hover:bg-white/100 transition-all">
-                <svg
-                  className="w-4 h-4 text-gray-600"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"
-                  />
-                </svg>
-              </div>
-              <div
-                className={`relative w-full h-[360px] rounded-2xl shadow-xl transition-transform duration-700 [transform-style:preserve-3d] ${
-                  flippedIndex === index + team.length ? "rotate-y-180" : ""
-                }`}
-              >
-                {/* Front */}
-                <div className="absolute inset-0 bg-white rounded-2xl overflow-hidden [backface-visibility:hidden]">
+              <div className="relative w-full h-[360px] rounded-2xl shadow-xl">
+                <div className="bg-white rounded-2xl overflow-hidden h-full">
                   <Image
                     src={member.image}
                     alt={member.name}
@@ -225,26 +131,11 @@ export default function OurTeam() {
                     className="object-cover rounded-2xl"
                   />
                   <div className="absolute bottom-0 bg-white/90 px-4 py-3 text-center w-full">
-                    <h3 className="font-semibold text-gray-800 text-lg">
+                    <h6 className="font-normal text-gray-800 text-lg">
                       {member.name}
-                    </h3>
-                    <p className="text-sm text-gray-500">
-                      {member.roles.join(", ")}
-                    </p>
+                    </h6>
+                    <p className="text-sm text-gray-500">{member.title}</p>
                   </div>
-                </div>
-
-                {/* Back */}
-                <div className="absolute inset-0 bg-white rounded-2xl px-5 py-6 text-center flex flex-col justify-center items-center [transform:rotateY(180deg)] [backface-visibility:hidden]">
-                  <h3 className="font-semibold text-gray-800 text-lg mb-2">
-                    {member.name}
-                  </h3>
-                  <p className="text-sm text-gray-600 mb-4">
-                    {member.description}
-                  </p>
-                  <p className="text-xs text-gray-400">
-                    {member.roles.join(", ")}
-                  </p>
                 </div>
               </div>
             </div>

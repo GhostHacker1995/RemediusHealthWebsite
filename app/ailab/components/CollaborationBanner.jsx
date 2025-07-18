@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 function CollaborationBanner() {
@@ -16,9 +17,13 @@ function CollaborationBanner() {
         <p className="text-lg text-gray-300 my-4">
           Partner with us to co-develop or deploy AI tools.
         </p>
-        <button className="px-6 py-2 bg-gradient-to-r from-[#0e6178] via-[#0c4f63] to-[#0a3d4f] text-white rounded-md font-medium hover:from-[#0c4f63] hover:via-[#0a3d4f] hover:to-[#08303b] transition">
-          Contact Us
-        </button>
+        <Link
+          rel="stylesheet"
+          href="/contact"
+          className="px-6 py-2 bg-gradient-to-r from-[#0e6178] via-[#0c4f63] to-[#0a3d4f] text-white rounded-md font-medium hover:from-[#0c4f63] hover:via-[#0a3d4f] hover:to-[#08303b] transition"
+        >
+          <button>Contact Us</button>
+        </Link>
       </div>
     </div>
   );
