@@ -1,13 +1,16 @@
 import React from "react";
-import AboutBanner from "./components/Banner";
 import OurStorySection from "./components/Ourstory";
 import CorporateSocialResponsibility from "./components/Csr";
 import TeamCircleLayout from "./components/RemediusTeam";
+import AboutBanner from "@/components/Banner";
 
 function page() {
   return (
     <div>
-      <AboutBanner />
+      <AboutBanner
+        title={"About Us"}
+        description={"Learn more about RemediusRx"}
+      />
       <OurStorySection />
       <CorporateSocialResponsibility />
       <TeamCircleLayout />

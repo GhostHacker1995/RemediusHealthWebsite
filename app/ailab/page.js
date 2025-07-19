@@ -7,10 +7,12 @@ import AIBootcampSection from "./components/Bootcamp";
 import CallToActionSection from "./components/CallToAction";
 import CollaborateSupport from "./components/CollaborateSupport";
 import CollaborationBanner from "./components/CollaborationBanner";
+import AboutBanner from "./components/Banner";
 
 function page() {
   return (
     <div>
+      {/* <AboutBanner /> */}
       <FuturisticHero />
       <WhatWeDo />
       <AboutUsSection />
