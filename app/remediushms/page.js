@@ -108,7 +108,7 @@ function page() {
       />
       <div className="absolute inset-0 z-10 flex flex-col items-center justify-center text-center top-40 sm:top-155 ">
         <Image
-          src="/img/hms.png"
+          src="/img/Macbook-Air-www.jubileehealthservices.com.png"
           alt="Our Story"
           width={800}
           height={300}
