@@ -8,14 +8,14 @@ import "aos/dist/aos.css";
 
 const features = [
   {
-    title: "Remedius HMS",
+    title: "Remedius Live",
     description:
-      "Remedius' Hospital Management System manages hospitals or facilities, covering all essential hospital functions. Remedius HMS allows healthcare workers to manage patient data, vitals, lab tests, diagnostics, prescriptions, birth and death reports, pharmacy info, and drug inventory. It generates required reports and follows a patient's flow through clinical processes, capturing all details from arrival to departure.",
-    secondary: "Comprehensive hospital management for better care.",
-    image: "/img/hms.png",
+      "Virtual consultations with healthcare professionals, providing quality care without the need for in-person visits. Seamless prescription management, allowing users to easily access and manage their medications. Create appointments, book home/office visits, and order for Lab tests in one platform.",
+    secondary: "Quality care, anywhere, anytime.",
+    image: "/img/live.png",
     button: {
-      text: "Learn more about HMS",
-      href: "/ecosystem",
+      text: "Learn more about Live",
+      href: "/consult",
     },
   },
   {
@@ -26,29 +26,30 @@ const features = [
     image: "/img/rx.png",
     button: {
       text: "Learn more about Rx",
-      href: "/ecosystem",
+      href: "/pharmacy",
     },
   },
   {
-    title: "Remedius Live",
+    title: "Remedius HMS",
     description:
-      "Virtual consultations with healthcare professionals, providing quality care without the need for in-person visits. Seamless prescription management, allowing users to easily access and manage their medications. Create appointments, book home/office visits, and order for Lab tests in one platform.",
-    secondary: "Quality care, anywhere, anytime.",
-    image: "/img/live.png",
+      "Remedius' Hospital Management System manages hospitals or facilities, covering all essential hospital functions. Remedius HMS allows healthcare workers to manage patient data, vitals, lab tests, diagnostics, prescriptions, birth and death reports, pharmacy info, and drug inventory. It generates required reports and follows a patient's flow through clinical processes, capturing all details from arrival to departure.",
+    secondary: "Comprehensive hospital management for better care.",
+    image: "/img/hms.png",
     button: {
-      text: "Learn more about Live",
-      href: "/ecosystem",
+      text: "Learn more about HMS",
+      href: "/remediushms",
     },
   },
   {
     title: "Remedius AILab",
     description:
-      "We empower communities with accessible health education resources, promoting wellness, prevention, and informed decision-making for all.",
-    secondary: "Empowering communities with health education.",
+      "Remedius AILab is the innovation branch of Remedius, focused on applying Artificial Intelligence (AI), Machine Learning (ML), and Data Science to solve Africa’s healthcare challenges.",
+    secondary:
+      "We are not just training professionals we're building intelligent health systems",
     image: "/img/macro-eye-iris.jpg",
     button: {
       text: "Learn more about AILab",
-      href: "/ecosystem",
+      href: "/ailab",
     },
   },
 ];
@@ -64,8 +65,14 @@ export default function EcoSystem() {
   }, []);
 
   return (
-    <section className="bg-[#eaf7f4] py-12 px-4 min-h-[60vh] flex flex-col items-center justify-center">
-      <div className="max-w-7xl w-full mx-auto flex flex-col gap-16">
+    <section className="bg-gradient-to-b from-[#eaf7f4] to-[#cfe9e6] py-16 px-6 min-h-[70vh] flex flex-col items-center justify-center">
+      <span className="inline-block bg-[#f59e0b] text-white uppercase py-1 px-3 rounded-full text-xs font-semibold mb-3">
+        Our Services
+      </span>
+      <h1 className="text-5xl font-extrabold text-gray-800 mb-12 tracking-wide text-center">
+        The Remedius Eco System
+      </h1>
+      <div className="max-w-7xl w-full mx-auto flex flex-col gap-20">
         {features.map((feature, idx) => {
           // Special hero style for Remedius AI Lab
           if (feature.title === "Remedius AILab") {
@@ -104,12 +111,13 @@ export default function EcoSystem() {
                   <div className="flex flex-col sm:flex-row gap-4 justify-center">
                     <Link
                       href={feature.button.href}
-                      className="bg-[#8b5cf6] hover:bg-[#7c3aed] text-white px-8 py-3 rounded-full text-base font-semibold shadow-md transition-colors"
+                      className="bg-[#f59f0a] hover:bg-[#f59f0b] text-white px-8 py-3 rounded-full text-base font-semibold shadow-md transition-colors"
                     >
                       {feature.button.text}
                     </Link>
                     <a
-                      href="#demo"
+                      href="https://www.youtube.com/@RemediusMobileHealth"
+                      target="_blank"
                       className="border border-gray-400/60 text-white px-8 py-3 rounded-full text-base font-semibold flex items-center gap-2 hover:bg-white/10 transition-colors"
                     >
                       <svg
@@ -127,7 +135,7 @@ export default function EcoSystem() {
                         />
                         <path d="M10 8l6 4-6 4V8z" fill="white" />
                       </svg>
-                      Watch Demo
+                      Watch Demos
                     </a>
                   </div>
                 </div>

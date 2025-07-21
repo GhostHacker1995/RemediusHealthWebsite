@@ -18,21 +18,21 @@ export default function AboutBanner({ title, description, href }) {
         <h1 className="text-4xl md:text-5xl font-bold text-gray-200 mb-3 banner-title">
           {title}
         </h1>
-        <div>
+        {/* <div>
           <Link
             href="/"
-            className="text-lg md:text-xl text-blue-600 mb-2 underline hover:text-blue-800 transition"
+            className="text-lg md:text-xl text-blue-300 mb-2 underline hover:text-blue-400 transition"
           >
             Home
           </Link>{" "}
           <span className="text-gray-400">/</span>{" "}
           <Link
             href={`/${href}`}
-            className="text-lg md:text-xl text-blue-600 mb-2 underline hover:text-blue-800 transition"
+            className="text-lg md:text-xl text-blue-300 mb-2 underline hover:text-blue-400 transition"
           >
             {href.charAt(0).toUpperCase() + href.slice(1)}
           </Link>
-        </div>
+        </div> */}
         <p className="text-lg md:text-xl text-gray-300">{description}</p>
       </div>
     </section>

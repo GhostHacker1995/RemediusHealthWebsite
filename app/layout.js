@@ -2,6 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/layout/Navbar";
 import RemediusFooter from "@/layout/Footer";
+import { FaWhatsapp } from "react-icons/fa";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,7 +28,17 @@ export default function RootLayout({ children }) {
         <Navbar />
         {children}
         <RemediusFooter />
+        <a
+          href="https://wa.me/256758553488"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="whatsapp-button"
+        >
+          <FaWhatsapp size={24} /> WhatsApp Us
+        </a>
       </body>
     </html>
   );
 }
+
+/* Add this CSS to globals.css */

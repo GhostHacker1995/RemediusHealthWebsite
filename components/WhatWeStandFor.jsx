@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function AboutUsSection() {
   return (
-    <section className=" bg-[#f4fbfd]">
+    <section className=" bg-[#f4fbfd] mx-auto">
       <div className="text-center mb-12 bg-white p-12 px-4">
         <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
           <span className="text-[#f59e0b]">Empower your health,</span> Transform
@@ -16,7 +16,7 @@ export default function AboutUsSection() {
         </h2>
       </div>
 
-      <div className="max-w-7xl  grid md:grid-cols-2 mx-5 md:mx-20 gap-12 items-center">
+      <div className="max-w-6xl  grid md:grid-cols-2 mx-auto gap-12 items-center px-10 md:px-0">
         {/* Left Content */}
         <div>
           <span className="inline-block bg-[#f59e0b] text-white uppercase py-1 px-3 rounded-full text-xs font-semibold mb-3">

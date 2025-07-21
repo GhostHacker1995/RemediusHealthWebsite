@@ -3,11 +3,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [productsDropdownOpen, setProductsDropdownOpen] = useState(false);
   const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false);
+  const router = useRouter();
 
   // Close dropdowns when clicking outside
   useEffect(() => {
@@ -62,8 +64,25 @@ export default function Navbar() {
             >
               <li>
                 <Link
+                  href="/"
+                  className={`hover:text-[#0e6077] text-[18px] ${
+                    router.pathname === "/"
+                      ? "font-bold text-[#0e6077] underline"
+                      : ""
+                  }`}
+                  onClick={() => setMenuOpen(false)}
+                >
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/consult"
-                  className="hover:text-[#0e6077] text-[18px]"
+                  className={`hover:text-[#0e6077] text-[18px] ${
+                    router.pathname === "/consult"
+                      ? "font-bold text-[#0e6077] underline"
+                      : ""
+                  }`}
                   onClick={() => setMenuOpen(false)}
                 >
                   Consult Doctor
@@ -72,7 +91,11 @@ export default function Navbar() {
               <li>
                 <Link
                   href="/pharmacy"
-                  className="hover:text-[#0e6077] text-[18px]"
+                  className={`hover:text-[#0e6077] text-[18px] ${
+                    router.pathname === "/pharmacy"
+                      ? "font-bold text-[#0e6077] underline"
+                      : ""
+                  }`}
                   onClick={() => setMenuOpen(false)}
                 >
                   Pharmacy
@@ -154,7 +177,11 @@ export default function Navbar() {
               <li>
                 <Link
                   href="/ailab"
-                  className="hover:text-[#0e6077] text-[18px]"
+                  className={`hover:text-[#0e6077] text-[18px] ${
+                    router.pathname === "/ailab"
+                      ? "font-bold text-[#0e6077] underline"
+                      : ""
+                  }`}
                   onClick={() => setMenuOpen(false)}
                 >
                   <span className="text-[#faa11b] font-bold">AI</span>Lab
