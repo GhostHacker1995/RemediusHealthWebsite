@@ -87,7 +87,7 @@ export default function WhatWeTreat() {
               </div>
               <Link
                 href="/appointments"
-                className="mt-6 inline-block bg-[#0e6077] text-white text-sm px-4 py-2 rounded-md font-medium hover:bg-[#094b5b] transition"
+                className="mt-6 inline-block bg-[#0e6077] text-white text-center text-sm px-4 py-2 rounded-md font-medium hover:bg-[#094b5b] transition"
               >
                 {item.cta}
               </Link>

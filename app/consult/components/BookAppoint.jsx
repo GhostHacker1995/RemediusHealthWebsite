@@ -45,12 +45,22 @@ export default function BookAppointmentSection() {
           </p>
 
           <div className="mt-6 flex flex-wrap gap-4 justify-center md:justify-start">
-            <button className="bg-[#004d66] text-white px-6 py-2 rounded-full hover:bg-[#00364d] transition">
+            <a
+              href="https://live.remediushealth.africa"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-[#004d66] text-white px-6 py-2 rounded-full hover:bg-[#00364d] transition inline-block text-center"
+            >
               Book Now
-            </button>
-            <button className="bg-[#004d66] text-white px-6 py-2 rounded-full hover:bg-[#00364d] transition">
+            </a>
+            <a
+              href="https://live.remediushealth.africa"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-[#004d66] text-white px-6 py-2 rounded-full hover:bg-[#00364d] transition inline-block text-center"
+            >
               Urgent Care
-            </button>
+            </a>
           </div>
         </motion.div>
       </div>

@@ -96,8 +96,15 @@ h6 {
   font-size: 60px !important;
 }
 
+.hero-heading{
+  font-size: 36px !important;
+}
+
 @media (max-width: 768px) {
   .banner-title {
+    font-size: 28px !important;
+  }
+  .hero-heading {
     font-size: 28px !important;
   }
 }

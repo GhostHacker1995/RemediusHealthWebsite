@@ -108,13 +108,13 @@ export default function Navbar() {
                 </button>
                 <div
                   className={`${
-                    productsDropdownOpen
+                    productsDropdownOpen && menuOpen
                       ? "opacity-100 visible translate-y-0"
                       : "opacity-0 invisible -translate-y-2"
-                  } absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-2 transition-all duration-200 z-50 sm:block ${
+                  } absolute top-full left-0 bg-white rounded-lg shadow-lg border border-gray-200 py-0 transition-all duration-200 z-50 sm:block ${
                     menuOpen
-                      ? "relative mt-0 shadow-none border-none bg-gray-50"
-                      : ""
+                      ? "relative w-full mt-0 py-0 shadow-none border-none bg-gray-50"
+                      : "opacity-0 invisible"
                   }`}
                   onMouseEnter={() =>
                     window.innerWidth >= 640 && setProductsDropdownOpen(true)
@@ -194,13 +194,13 @@ export default function Navbar() {
                 </button>
                 <div
                   className={`${
-                    aboutDropdownOpen
+                    aboutDropdownOpen && menuOpen
                       ? "opacity-100 visible translate-y-0"
                       : "opacity-0 invisible -translate-y-2"
-                  } absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-2 transition-all duration-200 z-50 sm:block ${
+                  } absolute top-full left-0 bg-white rounded-lg shadow-lg border border-gray-200 py-0 transition-all duration-200 z-50 sm:block ${
                     menuOpen
-                      ? "relative mt-0 shadow-none border-none bg-gray-50"
-                      : ""
+                      ? "relative w-full mt-0 py-0 shadow-none border-none bg-gray-50"
+                      : "opacity-0 invisible"
                   }`}
                   onMouseEnter={() =>
                     window.innerWidth >= 640 && setAboutDropdownOpen(true)

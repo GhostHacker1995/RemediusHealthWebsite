@@ -32,14 +32,26 @@ export default function ConsultHero() {
             We aim to connect you to the best health care, anytime anywhere
           </p>
           <div className="flex flex-col gap-3">
-            <button className="bg-white border border-gray-300 hover:border-cyan-800 text-cyan-800 font-medium py-2 px-6 rounded-lg shadow-sm transition w-65 flex items-center justify-center gap-2">
-              <FaCalendarAlt className="text-sm" />
-              Book Appointment today!
-            </button>
-            <button className="bg-white border border-gray-300 hover:border-cyan-800 text-cyan-800 font-medium py-2 px-6 rounded-lg shadow-sm transition w-65 flex items-center justify-center gap-2">
-              <FaHome className="text-sm" />
-              Book a home visit.
-            </button>
+            <a
+              href="https://live.remediushealth.africa"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <button className="bg-white border border-gray-300 hover:border-cyan-800 text-cyan-800 font-medium py-2 px-6 rounded-lg shadow-sm transition w-65 flex items-center justify-center gap-2">
+                <FaCalendarAlt className="text-sm" />
+                Book Appointment today!
+              </button>
+            </a>
+            <a
+              href="https://live.remediushealth.africa"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <button className="bg-white border border-gray-300 hover:border-cyan-800 text-cyan-800 font-medium py-2 px-6 rounded-lg shadow-sm transition w-65 flex items-center justify-center gap-2">
+                <FaHome className="text-sm" />
+                Book a home visit.
+              </button>
+            </a>
           </div>
 
           <div className="flex gap-4 mt-4">

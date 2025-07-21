@@ -31,7 +31,7 @@ export default function RemediusRxPage() {
               essential medications—all from the comfort of your home.
             </p>
             <a
-              href="#"
+              href="https://shop.remediushealth.africa"
               className="inline-block bg-[#155c79] text-white py-2 px-5 rounded hover:bg-[#f9a01f] transition"
             >
               Create an account
@@ -87,7 +87,7 @@ export default function RemediusRxPage() {
               get them delivered right to your door—quickly and securely.
             </p>
             <a
-              href="#"
+              href="https://shop.remediushealth.africa"
               className="inline-block bg-[#155c79] text-white py-2 px-6 rounded hover:bg-[#f9a01f] transition"
             >
               Get Started
@@ -106,7 +106,7 @@ export default function RemediusRxPage() {
           doorstep with just a few clicks.
         </p>
         <a
-          href="#"
+          href="https://shop.remediushealth.africa"
           className="inline-block bg-[#155c79] text-white py-2 px-6 rounded hover:bg-[#f9a01f] transition"
         >
           Sign up today
@@ -141,13 +141,15 @@ export default function RemediusRxPage() {
                 key={i}
                 className="bg-white shadow-md rounded-lg overflow-hidden text-center"
               >
-                <Image
-                  src={step.img}
-                  alt={step.title}
-                  width={300}
-                  height={300}
-                  className="w-full object-cover"
-                />
+                <div className="flex items-center justify-center h-[300px] bg-white">
+                  <Image
+                    src={step.img}
+                    alt={step.title}
+                    width={220}
+                    height={220}
+                    className="object-contain h-full w-auto"
+                  />
+                </div>
                 <div className="p-6">
                   <h5 className="text-xl font-light mb-2 text-gray-950">
                     {step.title}
@@ -159,7 +161,7 @@ export default function RemediusRxPage() {
           </div>
           <div className="text-center mt-8">
             <a
-              href="#"
+              href="https://shop.remediushealth.africa"
               className="inline-block bg-[#155c79] text-white py-2 px-6 rounded hover:bg-[#f9a01f] transition"
             >
               Place Your Order Now

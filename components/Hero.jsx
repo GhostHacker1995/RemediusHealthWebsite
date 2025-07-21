@@ -1,191 +1,119 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useState, useEffect } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const services = [
   {
-    desc: "Bringing healthcare at your fingertips",
-    icon: "/img/Logos/RemediusLiveLogo.svg",
-    link: "/services/remediuslive",
+    title: "RemediusLive",
+    description: "Bringing remote live health consultations to you.",
+    icon: "/img/hero/icons-01.png",
   },
   {
-    desc: "More than just pharmacies, your pharmacies",
-    icon: "/img/Logos/RemediusRxLogo.svg",
-    link: "/services/remediusrx",
+    title: "RemediusRx",
+    description: "Your one-stop platform for pharmacy services.",
+    icon: "/img/hero/icons-02.png",
   },
   {
-    desc: "Enhance efficiency, elevate patient care with an EMR.",
-    icon: "/img/Logos/remediusHMSCURRENT.svg",
-    link: "/services/emr",
+    title: "RemediusHMS",
+    description: "Elevate healthcare delivery using our EMR system.",
+    icon: "/img/hero/icons-03.png",
+  },
+  {
+    title: "RemediusAILab",
+    description: "Building Africa’s next intelligent health systems.",
+    icon: "/img/hero/icons-04.png",
   },
 ];
 
-export default function HeroSection() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const visibleCount = 3;
+export default function HeroServicesSection() {
+  const [current, setCurrent] = useState(0);
 
-  // Auto-scroll effect
-  useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      easing: "ease-in-out",
-      once: true,
-    });
-
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % services.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
-
-  // Calculate visible items (wrap around)
-  // Instead of slicing, render all cards in a row and animate translateX
-  const getTranslateX = () => {
-    // Each card is 18rem (w-72) + 1.5rem (gap-6) = 19.5rem per card
-    // But gap is not added after last card, so we use only card width for translation
-    return `-${currentIndex * 19.5}rem`;
+  const nextSlide = () => {
+    setCurrent((prev) => (prev + 1) % services.length);
   };
 
   const prevSlide = () => {
-    setCurrentIndex((prev) => (prev === 0 ? services.length - 1 : prev - 1));
+    setCurrent((prev) => (prev - 1 + services.length) % services.length);
   };
 
-  const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % services.length);
-  };
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % services.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [services.length]);
 
   return (
-    <section className="relative bg-blue-50 overflow-hidden pt-35 pb-20">
-      {/* Background decorative image (placeholder or actual) */}
-      <div className="absolute inset-0">
-        <Image
-          src="/img/medicine.png"
-          alt="Background decoration"
-          fill
-          className="object-contain opacity-10"
-        />
-      </div>
+    <section className="bg-[#dcf3fa] py-20 md:px-4 px-1 pt-40">
+      <div className="max-w-7xl mx-auto text-center">
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12 hero-heading">
+          HealthCare that follows you <br /> wherever you go
+        </h2>
 
-      <div className="relative z-10 max-w-6xl mx-auto px-4 text-center">
-        <h1
-          className="text-4xl font-bold text-gray-900 mb-12"
-          data-aos="fade-up"
-          data-aos-delay="100"
-        >
-          HealthCare that follows you <br />
-          wherever you go
-        </h1>
-
-        <div
-          className="relative flex items-center justify-center"
-          data-aos="fade-up"
-          data-aos-delay="300"
-        >
-          {/* Left arrow */}
+        <div className="flex items-center justify-center gap-4">
           <button
             onClick={prevSlide}
-            className="absolute left-0 p-2 rounded-full text-gray-950 font-black bg-white shadow hover:bg-gray-100 z-20"
-            data-aos="fade-right"
-            data-aos-delay="500"
+            className="bg-white shadow rounded-full md:p-3 p-2 hover:bg-gray-100"
           >
-            &#8592;
+            <FaChevronLeft className="text-[#115b78]" />
           </button>
 
-          {/* Service Cards (animated row) */}
-          <div
-            className="overflow-hidden w-[900px]"
-            data-aos="zoom-in"
-            data-aos-delay="400"
-          >
-            {" "}
-            {/* 3*288px = 864px, a bit more for gap */}
-            <div
-              className="flex gap-6 transition-transform duration-700 ease-in-out"
-              style={{ transform: `translateX(${getTranslateX()})` }}
-            >
-              {services.concat(services).map((service, index) => (
-                // Duplicate array for infinite effect if needed
-                <div
-                  key={index}
-                  className="w-72 bg-white rounded-xl shadow-md p-6 flex-shrink-0 transition-all duration-500"
-                >
-                  <div className="flex justify-center mb-4">
-                    <Image
-                      src={service.icon}
-                      alt={`Service ${index % services.length}`}
-                      width={96}
-                      height={96}
-                    />
-                  </div>
-                  <p className="text-gray-700 mb-4 text-sm">{service.desc}</p>
-                  <Link
-                    href={service.link}
-                    className="inline-block px-4 py-2 rounded-full text-sm text-white transition-colors duration-300"
-                    style={{ backgroundColor: "#145c78" }}
-                    onMouseOver={(e) =>
-                      (e.currentTarget.style.backgroundColor = "#10485e")
-                    }
-                    onMouseOut={(e) =>
-                      (e.currentTarget.style.backgroundColor = "#145c78")
-                    }
-                  >
-                    View Details
-                  </Link>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+            {services.map((service, idx) => (
+              <div
+                key={idx}
+                className={`bg-white rounded-xl p-6 shadow-md transition duration-300 ${
+                  idx === current ? "block" : "hidden md:block"
+                }`}
+              >
+                <div className="flex justify-center mb-4">
+                  <Image
+                    src={service.icon}
+                    alt={service.title}
+                    width={60}
+                    height={60}
+                    className="object-contain"
+                  />
                 </div>
-              ))}
-            </div>
+                <h3 className="text-lg font-bold text-[#115b78] mb-2">
+                  {service.title}
+                </h3>
+                <p className="text-sm text-gray-600 mb-4">
+                  {service.description}
+                </p>
+                <button className="bg-[#115b78] text-white py-2 px-4 rounded-full hover:bg-[#10485e] transition">
+                  View Details
+                </button>
+              </div>
+            ))}
           </div>
 
-          {/* Right arrow */}
           <button
             onClick={nextSlide}
-            className="absolute right-0 p-2 rounded-full text-gray-950 font-black bg-white shadow hover:bg-gray-100 z-20"
-            data-aos="fade-left"
-            data-aos-delay="500"
+            className="bg-white shadow rounded-full md:p-3 p-2 hover:bg-gray-100"
           >
-            &#8594;
+            <FaChevronRight className="text-[#115b78]" />
           </button>
         </div>
 
-        {/* Bottom indicators */}
-        <div
-          className="mt-6 flex justify-center gap-2"
-          data-aos="fade-up"
-          data-aos-delay="600"
-        >
+        <div className="flex justify-center gap-2 mt-6">
           {services.map((_, idx) => (
-            <button
+            <span
               key={idx}
-              onClick={() => setCurrentIndex(idx)}
-              className={`h-3 w-6 rounded-full transition-all duration-300`}
-              style={{
-                borderRadius: "8px",
-                backgroundColor: idx === currentIndex ? "#145c78" : "#b3d3df",
-              }}
-            />
+              className={`block w-8 h-3 rounded-full transition duration-300 cursor-pointer ${
+                idx === current ? "bg-[#115b78]" : "bg-[#99bfcf]"
+              }`}
+              onClick={() => setCurrent(idx)}
+            ></span>
           ))}
         </div>
 
-        {/* See all button */}
-        <Link
-          href="/services"
-          className="mt-10 inline-block px-6 py-3 rounded-full font-medium text-white transition-colors duration-300"
-          style={{ backgroundColor: "#145c78" }}
-          onMouseOver={(e) =>
-            (e.currentTarget.style.backgroundColor = "#10485e")
-          }
-          onMouseOut={(e) =>
-            (e.currentTarget.style.backgroundColor = "#145c78")
-          }
-          data-aos="fade-up"
-          data-aos-delay="700"
-        >
+        <button className="mt-8 bg-[#115b78] text-white py-2 px-6 rounded-full hover:bg-[#10485e] transition">
           See all services
-        </Link>
+        </button>
       </div>
     </section>
   );
