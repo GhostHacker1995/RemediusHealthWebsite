@@ -45,6 +45,7 @@ export default function JobsPage() {
       <AboutBanner
         title={"Work with Us"}
         description={"Join our team and make a difference"}
+        href={"careers"}
       />
       <section className="min-h-screen bg-[#eaf7f4] text-gray-900 py-5 px-4">
         <div className="max-w-6xl mx-auto text-center mb-12">

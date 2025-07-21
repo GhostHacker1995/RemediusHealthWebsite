@@ -5,7 +5,7 @@ import Image from "next/image";
 export default function AboutUsSection() {
   return (
     <section className=" bg-[#f4fbfd]">
-      <div className="max-w-7xl mx-auto text-center mb-12 bg-white p-12 px-4">
+      <div className="text-center mb-12 bg-white p-12 px-4">
         <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
           <span className="text-[#f59e0b]">Empower your health,</span> Transform
           your life <br />

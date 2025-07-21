@@ -10,6 +10,7 @@ function page() {
       <AboutBanner
         title={"About Us"}
         description={"Learn more about RemediusRx"}
+        href={"about"}
       />
       <OurStorySection />
       <CorporateSocialResponsibility />

@@ -8,7 +8,11 @@ export default function RemediusRxPage() {
   return (
     <main className="bg-white">
       {/* Save Money Section */}
-      <AboutBanner title={"Pharmacy"} description={"RemediusRx E-Pharmacy"} />
+      <AboutBanner
+        title={"Pharmacy"}
+        description={"RemediusRx E-Pharmacy"}
+        href={"pharmacy"}
+      />
       <section className="bg-gray-100 py-12 pt-30">
         <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-8 items-center">
           <div className="order-2 md:order-1 text-center">

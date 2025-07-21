@@ -105,6 +105,7 @@ function page() {
         description={
           "A system that makes a solid contribution to the goals and objectives of your organisation."
         }
+        href={"remediushms"}
       />
       <div className="absolute inset-0 z-10 flex flex-col items-center justify-center text-center top-40 sm:top-155 ">
         <Image

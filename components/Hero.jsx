@@ -111,8 +111,11 @@ export default function HeroServicesSection() {
           ))}
         </div>
 
-        <button className="mt-8 bg-[#115b78] text-white py-2 px-6 rounded-full hover:bg-[#10485e] transition">
-          See all services
+        <button
+          className="mt-8 bg-[#115b78] text-white py-2 px-6 rounded-full hover:bg-[#10485e] transition"
+          onClick={() => (window.location.href = "/about")}
+        >
+          Read More
         </button>
       </div>
     </section>

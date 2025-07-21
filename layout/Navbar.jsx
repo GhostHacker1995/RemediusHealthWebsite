@@ -37,14 +37,14 @@ export default function Navbar() {
       <nav className="px-0 sm:px-0 py-0 fixed top-0 left-0 w-full z-50 bg-transparent m-auto">
         <div className="max-w-7xl mx-5 md:mx-20 xl:mx-auto mt-4 bg-white rounded-full px-2 sm:px-2 py-1 sm:py-2 flex items-center justify-between shadow-none">
           {/* Left: Logo */}
-          <div className="flex items-center gap-2 sm:gap-3">
+          <div className="flex items-center gap-2 md:gap-3">
             <Link href="/">
-              <div className="relative w-40 h-15 sm:w-[180px] sm:h-[60px]">
+              <div className="relative w-40 h-15 md:w-[180px] md:h-[60px]">
                 <Image
                   src="/img/Logos/RemediusMobileLogo.svg"
                   alt="Remedius Logo"
                   fill
-                  sizes="(max-width: 640px) 96px, 150px"
+                  sizes="(max-width: 768px) 96px, 150px"
                   className="object-contain"
                 />
               </div>
@@ -56,9 +56,9 @@ export default function Navbar() {
             <ul
               className={`${
                 menuOpen
-                  ? "flex flex-col absolute top-16 left-0 w-full bg-white rounded-b-xl shadow-lg py-4 px-6 gap-4 items-start z-40 sm:static sm:flex-row sm:bg-transparent sm:shadow-none sm:py-0 sm:px-0 sm:gap-6 sm:items-center"
-                  : "hidden sm:flex sm:flex-row sm:bg-transparent sm:shadow-none sm:py-0 sm:px-0 sm:gap-6 sm:items-center"
-              } text-xs sm:text-sm text-gray-700 transition-all duration-200`}
+                  ? "flex flex-col absolute top-16 left-0 w-full bg-white rounded-b-xl shadow-lg py-4 px-6 gap-4 items-start z-40 md:static md:flex-row md:bg-transparent md:shadow-none md:py-0 md:px-0 md:gap-6 md:items-center"
+                  : "hidden md:flex md:flex-row md:bg-transparent md:shadow-none md:py-0 md:px-0 md:gap-6 md:items-center"
+              } text-xs md:text-sm text-gray-700 transition-all duration-200`}
             >
               <li>
                 <Link
@@ -83,10 +83,10 @@ export default function Navbar() {
                   className="hover:text-[#0e6077] text-[18px] flex items-center gap-1"
                   onClick={() => setProductsDropdownOpen(!productsDropdownOpen)}
                   onMouseEnter={() =>
-                    window.innerWidth >= 640 && setProductsDropdownOpen(true)
+                    window.innerWidth >= 768 && setProductsDropdownOpen(true)
                   }
                   onMouseLeave={() =>
-                    window.innerWidth >= 640 && setProductsDropdownOpen(false)
+                    window.innerWidth >= 768 && setProductsDropdownOpen(false)
                   }
                 >
                   Products
@@ -108,19 +108,15 @@ export default function Navbar() {
                 </button>
                 <div
                   className={`${
-                    productsDropdownOpen && menuOpen
+                    productsDropdownOpen
                       ? "opacity-100 visible translate-y-0"
                       : "opacity-0 invisible -translate-y-2"
-                  } absolute top-full left-0 bg-white rounded-lg shadow-lg border border-gray-200 py-0 transition-all duration-200 z-50 sm:block ${
-                    menuOpen
-                      ? "relative w-full mt-0 py-0 shadow-none border-none bg-gray-50"
-                      : "opacity-0 invisible"
-                  }`}
+                  } absolute top-full left-0 bg-white rounded-lg shadow-lg border border-gray-200 py-0 transition-all duration-200 z-50 sm:block`}
                   onMouseEnter={() =>
-                    window.innerWidth >= 640 && setProductsDropdownOpen(true)
+                    window.innerWidth >= 768 && setProductsDropdownOpen(true)
                   }
                   onMouseLeave={() =>
-                    window.innerWidth >= 640 && setProductsDropdownOpen(false)
+                    window.innerWidth >= 768 && setProductsDropdownOpen(false)
                   }
                 >
                   <Link
@@ -169,10 +165,10 @@ export default function Navbar() {
                   className="hover:text-[#0e6077] text-[18px] flex items-center gap-1"
                   onClick={() => setAboutDropdownOpen(!aboutDropdownOpen)}
                   onMouseEnter={() =>
-                    window.innerWidth >= 640 && setAboutDropdownOpen(true)
+                    window.innerWidth >= 768 && setAboutDropdownOpen(true)
                   }
                   onMouseLeave={() =>
-                    window.innerWidth >= 640 && setAboutDropdownOpen(false)
+                    window.innerWidth >= 768 && setAboutDropdownOpen(false)
                   }
                 >
                   About Us
@@ -194,19 +190,15 @@ export default function Navbar() {
                 </button>
                 <div
                   className={`${
-                    aboutDropdownOpen && menuOpen
+                    aboutDropdownOpen
                       ? "opacity-100 visible translate-y-0"
                       : "opacity-0 invisible -translate-y-2"
-                  } absolute top-full left-0 bg-white rounded-lg shadow-lg border border-gray-200 py-0 transition-all duration-200 z-50 sm:block ${
-                    menuOpen
-                      ? "relative w-full mt-0 py-0 shadow-none border-none bg-gray-50"
-                      : "opacity-0 invisible"
-                  }`}
+                  } absolute top-full left-0 bg-white rounded-lg shadow-lg border border-gray-200 py-0 transition-all duration-200 z-50 sm:block`}
                   onMouseEnter={() =>
-                    window.innerWidth >= 640 && setAboutDropdownOpen(true)
+                    window.innerWidth >= 768 && setAboutDropdownOpen(true)
                   }
                   onMouseLeave={() =>
-                    window.innerWidth >= 640 && setAboutDropdownOpen(false)
+                    window.innerWidth >= 768 && setAboutDropdownOpen(false)
                   }
                 >
                   <Link
@@ -244,7 +236,7 @@ export default function Navbar() {
           </div>
 
           {/* Hamburger for mobile */}
-          <div className="flex sm:hidden items-center ml-2 mr-5">
+          <div className="flex md:flex items-center ml-2 mr-5">
             <button
               className="flex flex-col justify-center items-center w-8 h-8"
               onClick={() => setMenuOpen((prev) => !prev)}
@@ -269,10 +261,10 @@ export default function Navbar() {
           </div>
 
           {/* Right: Contact Button (desktop only) */}
-          <div className="hidden sm:block mt-2 sm:mt-0 mr-10">
+          <div className="hidden md:block mt-2 md:mt-0 mr-10">
             <Link
               href="/contact"
-              className="px-3 sm:px-4 py-2 border border-[#0e6077] text-[18px] text-[#0e6077] rounded hover:bg-[#0e6077] hover:text-white transition text-xs sm:text-sm"
+              className="px-3 md:px-4 py-2 border border-[#0e6077] text-[18px] text-[#0e6077] rounded hover:bg-[#0e6077] hover:text-white transition text-xs md:text-sm"
             >
               Contact Us
             </Link>
