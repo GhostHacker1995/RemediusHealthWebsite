@@ -29,12 +29,12 @@ export default function RootLayout({ children }) {
         {children}
         <RemediusFooter />
         <a
-          href="https://wa.me/256758553488"
+          href="https://wa.me/256758553488?text=Hello%20Remedius%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services."
           target="_blank"
           rel="noopener noreferrer"
           className="whatsapp-button"
         >
-          <FaWhatsapp size={24} /> WhatsApp Us
+          <FaWhatsapp size={24} />
         </a>
       </body>
     </html>

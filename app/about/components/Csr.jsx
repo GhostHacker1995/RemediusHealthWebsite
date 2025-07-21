@@ -47,7 +47,7 @@ export default function CorporateSocialResponsibility() {
   ];
 
   return (
-    <section className="bg-[#121212] text-white py-20 px-4">
+    <section className="bg-[#135b78] text-white py-20 px-4">
       <div className="max-w-7xl mx-auto text-center">
         <h2 className="text-3xl md:text-4xl font-bold mb-4">
           Corporate Social Responsibility
@@ -63,7 +63,7 @@ export default function CorporateSocialResponsibility() {
           {csrItems.map((item, index) => (
             <div
               key={index}
-              className="bg-gradient-to-br from-[#1e1e1e] to-[#2c2c2c] p-6 rounded-xl shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-xl text-left w-full max-w-sm"
+              className="bg-gradient-to-br from-[#135b78] to-[#135b78] p-6 rounded-l border border-[rgba(255,255,255,0.05)] shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-xl text-left w-full max-w-sm"
               data-aos="fade-up"
             >
               <div className="text-[#faa11b] text-4xl mb-3">
