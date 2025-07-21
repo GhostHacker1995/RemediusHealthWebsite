@@ -41,6 +41,7 @@ export default function ContactPage() {
       <AboutBanner
         title={"Contact Us"}
         description={<p>Get in touch with us for any inquiries or support.</p>}
+        href={"contact"}
       />
       <section className="bg-white text-gray-900 min-h-screen py-12 px-4 ">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-start">
