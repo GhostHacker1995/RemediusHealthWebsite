@@ -236,7 +236,7 @@ export default function Navbar() {
           </div>
 
           {/* Hamburger for mobile */}
-          <div className="flex md:flex items-center ml-2 mr-5">
+          <div className="flex md:hidden items-center ml-2 mr-5">
             <button
               className="flex flex-col justify-center items-center w-8 h-8"
               onClick={() => setMenuOpen((prev) => !prev)}
