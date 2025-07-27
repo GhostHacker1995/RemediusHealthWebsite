@@ -8,6 +8,7 @@ import CallToActionSection from "./components/CallToAction";
 import CollaborateSupport from "./components/CollaborateSupport";
 import CollaborationBanner from "./components/CollaborationBanner";
 import AboutBanner from "./components/Banner";
+import AiCourses from "./components/AiCourses";
 
 function page() {
   return (
@@ -18,6 +19,7 @@ function page() {
       <AboutUsSection />
       <WhyWeMatter />
       <AIBootcampSection />
+      <AiCourses />
       <CallToActionSection />
       <CollaborationBanner />
       <CollaborateSupport />

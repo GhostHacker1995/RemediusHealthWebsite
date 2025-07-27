@@ -1,40 +1,31 @@
 "use client";
 
-import Image from "next/image";
-
-const steps = [
-  {
-    title: "Single Consultation",
-    description: "UGX 15,000 Virtual/physical consultations",
-    icon: "/img/oneonone-01.png",
-    badge: "01",
-    badgeColor: "bg-[#0e6077]",
-  },
-  {
-    title: "Chronic Care Package Subscription",
-    description:
-      "UGX 600,000 You get, Glucometer, BP Cuff, Unlimited virtual consultations Wellness examinations/mo Customized Health tips in our app e.t.c.",
-    icon: "/img/chronicc-01.png",
-    badge: "02",
-    badgeColor: "bg-[#ea580c]",
-  },
-  {
-    title: "Home/Office Visits",
-    description: "UGX 60,000 per visit Additional costs of other medical",
-    icon: "/img/homevisit.jpg",
-    badge: "03",
-    badgeColor: "bg-[#0e6077]",
-  },
-  {
-    title: "Therapy Sessions",
-    description: "UGX 50,000 per session",
-    icon: "/img/therapy-01.png",
-    badge: "04",
-    badgeColor: "bg-[#ea580c]",
-  },
-];
+import { useEffect, useState } from "react";
+import { howMuchDoesItCost } from "@/app/services";
 
 export default function HowMuchItCosts() {
+  const [steps, setSteps] = useState([]);
+
+  const fetchSteps = async () => {
+    try {
+      const data = await howMuchDoesItCost();
+      const formattedSteps = data.map((item) => ({
+        title: item.itemName,
+        description: item.priceAndDescription.html.replace(/<[^>]*>/g, ""), // Remove HTML tags
+        icon: item.itemIcon.url,
+        badge: item.id.slice(-2), // Extract last two characters of ID as badge
+        badgeColor: "bg-[#0e6077]", // Default badge color
+      }));
+      setSteps(formattedSteps);
+    } catch (error) {
+      console.error("Error fetching steps:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchSteps();
+  }, []);
+
   return (
     <section className="bg-white py-20 px-4">
       <div className="max-w-7xl mx-auto text-center">
@@ -55,11 +46,10 @@ export default function HowMuchItCosts() {
             >
               {/* Circular Image */}
               <div className="relative w-32 h-32 rounded-full overflow-hidden border-4 border-[#0e6077] mb-4 shadow-md">
-                <Image
-                  src={step.icon}
-                  alt={step.title}
-                  fill
-                  className="object-cover"
+                <img
+                  src={step?.itemIcon?.url}
+                  alt={step.itemName}
+                  className="object-cover w-full h-full rounded-full"
                 />
                 <div
                   className={`absolute -top-2 -right-2 text-white text-xs font-bold w-8 h-8 flex items-center justify-center rounded-full ${step.badgeColor} shadow-lg`}
@@ -107,10 +97,10 @@ export default function HowMuchItCosts() {
 
               {/* Text */}
               <h4 className="text-lg font-semibold text-[#0e6077] mb-2">
-                {step.title}
+                {step.itemName}
               </h4>
               <p className="text-sm text-gray-600 max-w-xs">
-                {step.description}
+                {step?.priceAndDescription?.html.replace(/<[^>]*>/g, "")}
               </p>
             </div>
           ))}

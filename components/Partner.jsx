@@ -1,25 +1,30 @@
 "use client";
 
-import Image from "next/image";
-import { useEffect, useRef } from "react";
-
-const logos = [
-  { src: "/img/Logos/AIC.png", url: "https://www.africanimpact.ca/" },
-  { src: "/img/Logos/DROP OFF LOGO.svg", url: "https://dropoffcouriers.com/" },
-  { src: "/img/Logos/H2I.png", url: "https://h2i.utoronto.ca/" },
-  {
-    src: "/img/Logos/Hive Colab Logo - 2024 small.png",
-    url: "https://hivecolab.org/",
-  },
-  { src: "/img/Logos/ICUBE-250x175px.png", url: "https://icubeutm.ca/" },
-  { src: "/img/Logos/NobellumLogo.png", url: "https://www.nobellum.com/" },
-  // { src: "/img/Logos/SANAA BRANDS.svg", url: "http://sanaa.co/" },
-  { src: "/img/Logos/YSAU.png", url: "https://hivecolab.org/ysau" },
-];
+import { useEffect, useRef, useState } from "react";
+import { allSponsors } from "@/app/services";
 
 export default function PartnerCarousel() {
   const containerRef = useRef(null);
   const isHovered = useRef(false);
+  const [sponsors, setSponsors] = useState([]);
+
+  const fetchSponsors = async () => {
+    try {
+      const response = await allSponsors();
+      setSponsors(response);
+    } catch (error) {
+      console.error("Error fetching sponsors:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchSponsors();
+  }, []);
+
+  const logos = sponsors.map((sponsor) => ({
+    src: sponsor.sponsorLogo.url,
+    url: sponsor.sponsorWebsiteLink,
+  }));
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -64,7 +69,7 @@ export default function PartnerCarousel() {
               style={{ height: 60 }}
             >
               <div className="grayscale hover:grayscale-0 transition duration-300 ease-in-out">
-                <Image
+                <img
                   src={logo.src}
                   alt={`Partner ${idx + 1}`}
                   width={140}

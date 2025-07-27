@@ -1,34 +1,30 @@
 "use client";
 
-import Image from "next/image";
 import { useState, useEffect } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-
-const services = [
-  {
-    title: "RemediusLive",
-    description: "Bringing remote live health consultations to you.",
-    icon: "/img/hero/icons-01.png",
-  },
-  {
-    title: "RemediusRx",
-    description: "Your one-stop platform for pharmacy services.",
-    icon: "/img/hero/icons-02.png",
-  },
-  {
-    title: "RemediusHMS",
-    description: "Elevate healthcare delivery using our EMR system.",
-    icon: "/img/hero/icons-03.png",
-  },
-  {
-    title: "RemediusAILab",
-    description: "Building Africa’s next intelligent health systems.",
-    icon: "/img/hero/icons-04.png",
-  },
-];
+import { allServices } from "@/app/services";
 
 export default function HeroServicesSection() {
+  const [services, setServices] = useState([]);
   const [current, setCurrent] = useState(0);
+
+  const fetchServices = async () => {
+    try {
+      const data = await allServices();
+      const formattedServices = data.map((service) => ({
+        title: service.serviceTitle,
+        description: service.serviceTagline,
+        icon: service.serviceIcon.url,
+        link: service.serviceLink,
+      }));
+      setServices(formattedServices);
+    } catch (error) {
+      console.error("Error fetching services:", error);
+    }
+  };
+  useEffect(() => {
+    fetchServices();
+  }, []);
 
   const nextSlide = () => {
     setCurrent((prev) => (prev + 1) % services.length);
@@ -70,11 +66,11 @@ export default function HeroServicesSection() {
                 }`}
               >
                 <div className="flex justify-center mb-4">
-                  <Image
+                  <img
                     src={service.icon}
                     alt={service.title}
-                    width={60}
-                    height={60}
+                    width="60"
+                    height="60"
                     className="object-contain"
                   />
                 </div>
