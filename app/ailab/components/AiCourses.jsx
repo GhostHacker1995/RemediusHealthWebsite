@@ -27,7 +27,7 @@ export default function CourseCard() {
 
   return (
     <div className="flex justify-center bg-gray-100">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-6 mx-20 ">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-6 md:mx-20 ">
         {courses.map((course) => (
           <div
             key={course.id}
