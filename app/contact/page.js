@@ -6,26 +6,33 @@ import { MdMessage } from "react-icons/md";
 import { FaXTwitter } from "react-icons/fa6";
 import AboutBanner from "@/components/Banner";
 
+import { useState, useRef } from "react";
+
 export default function ContactPage() {
+  const [sending, setSending] = useState(false);
+  const formRef = useRef(null);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setSending(true);
 
-    const formData = {
-      firstName: event.target.firstName.value,
-      lastName: event.target.lastName.value,
-      email: event.target.email.value,
-      phone: event.target.phone.value,
-      message: event.target.message.value,
-    };
+    const name =
+      `${event.target.firstName.value} ${event.target.lastName.value}`.trim();
+    const email = event.target.email.value;
+    const message = event.target.message.value;
+    const formData = { name, email, message };
 
     console.log("Form Data:", formData);
     try {
       const response = await axios.post(
-        "https://remedius-server.onrender.com/send-email",
+        "https://remedius-backend.onrender.com/send-email",
         formData
       );
-      if (response.data.success) {
+      if (response.data.message === "Form submitted successfully.") {
         alert("Your message has been sent successfully!");
+        if (formRef.current) {
+          formRef.current.reset();
+        }
       } else {
         alert("Failed to send your message. Please try again later.");
       }
@@ -33,6 +40,8 @@ export default function ContactPage() {
       console.error("Error submitting form:", error);
       console.error("Error response:", error.response?.data);
       alert("An error occurred. Please try again later.");
+    } finally {
+      setSending(false);
     }
   };
 
@@ -118,6 +127,7 @@ export default function ContactPage() {
 
           {/* Right side - Contact Form */}
           <form
+            ref={formRef}
             className="bg-gray-50 p-8 rounded-xl shadow-md space-y-6"
             onSubmit={handleSubmit}
           >
@@ -188,8 +198,9 @@ export default function ContactPage() {
             <button
               type="submit"
               className="w-full bg-[#149099] text-white py-3 rounded-md font-semibold hover:bg-gray-800 transition"
+              disabled={sending}
             >
-              Send message
+              {sending ? "Sending..." : "Send message"}
             </button>
           </form>
         </div>
