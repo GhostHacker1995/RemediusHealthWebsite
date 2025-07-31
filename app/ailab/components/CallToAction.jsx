@@ -1,8 +1,94 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 
 export default function CallToActionSection() {
+  // State for all fields
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [countryCity, setCountryCity] = useState("");
+  const [profession, setProfession] = useState("");
+  const [organization, setOrganization] = useState("");
+  const [areaOfInterest, setAreaOfInterest] = useState([]);
+  const [specifyOther, setSpecifyOther] = useState("");
+  const [experience, setExperience] = useState("");
+  const [experienceDescription, setExperienceDescription] = useState("");
+  const [motivation, setMotivation] = useState("");
+  const [referralSource, setReferralSource] = useState("");
+  const [contactAgreement, setContactAgreement] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState("");
+  const [error, setError] = useState("");
+
+  // Checkbox handler for areaOfInterest
+  const handleAreaOfInterest = (e) => {
+    const value = e.target.value;
+    if (e.target.checked) {
+      setAreaOfInterest((prev) => [...prev, value]);
+    } else {
+      setAreaOfInterest((prev) => prev.filter((v) => v !== value));
+    }
+  };
+
+  // Form submit handler
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setSuccess("");
+    setError("");
+    // Compose payload
+    const payload = {
+      fullName,
+      email,
+      phone,
+      countryCity,
+      profession,
+      organization,
+      areaOfInterest: specifyOther
+        ? [...areaOfInterest, specifyOther]
+        : areaOfInterest,
+      experience,
+      experienceDescription,
+      motivation,
+      referralSource,
+      contactAgreement,
+    };
+    try {
+      const res = await fetch(
+        "https://remedius-backend.onrender.com/send-email",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        }
+      );
+      const data = await res.json();
+      if (res.ok) {
+        setSuccess("Your application was submitted successfully!");
+        setFullName("");
+        setEmail("");
+        setPhone("");
+        setCountryCity("");
+        setProfession("");
+        setOrganization("");
+        setAreaOfInterest([]);
+        setSpecifyOther("");
+        setExperience("");
+        setExperienceDescription("");
+        setMotivation("");
+        setReferralSource("");
+        setContactAgreement(false);
+      } else {
+        setError(data.error || "Submission failed. Please try again.");
+      }
+    } catch (err) {
+      setError("Network error. Please try again.");
+    }
+    setLoading(false);
+  };
+
   return (
     <section className="bg-gradient-to-br from-white to-gray-100 py-20 px-6">
       <div className="max-w-4xl mx-auto text-center">
@@ -30,37 +116,50 @@ export default function CallToActionSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
           className="bg-white shadow-xl rounded-xl p-8 max-w-2xl mx-auto space-y-6"
+          onSubmit={handleSubmit}
         >
+          {success && <div className="text-green-600 mb-4">{success}</div>}
+          {error && <div className="text-red-600 mb-4">{error}</div>}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <input
               type="text"
               placeholder="Full Name"
               className="w-full border border-gray-300 rounded-md px-4 py-3 text-gray-950 focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
+              value={fullName}
+              onChange={(e) => setFullName(e.target.value)}
             />
             <input
               type="email"
               placeholder="Email Address"
               className="w-full border text-gray-950 border-gray-300 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
             <input
               type="text"
               placeholder="Phone Number"
               className="w-full border text-gray-950 border-gray-300 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
             />
             <input
               type="text"
               placeholder="Country & City"
               className="w-full border text-gray-950 border-gray-300 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
+              value={countryCity}
+              onChange={(e) => setCountryCity(e.target.value)}
             />
           </div>
 
           <select
             className="w-full border text-gray-950 border-gray-300 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
             required
+            value={profession}
+            onChange={(e) => setProfession(e.target.value)}
           >
             <option value="">Current Profession</option>
             <option value="Medical Doctor">Medical Doctor</option>
@@ -75,38 +174,66 @@ export default function CallToActionSection() {
             type="text"
             placeholder="Organization / Institution (optional)"
             className="w-full border text-gray-950 border-gray-300 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            value={organization}
+            onChange={(e) => setOrganization(e.target.value)}
           />
 
           <fieldset className="space-y-2">
             <legend className="text-gray-950">Area of Interest</legend>
             <div className="flex flex-wrap text-gray-950 gap-4">
               <label className="flex items-center text-gray-950 space-x-2">
-                <input type="checkbox" value="Python for Health Data" />
+                <input
+                  type="checkbox"
+                  value="Python for Health Data"
+                  checked={areaOfInterest.includes("Python for Health Data")}
+                  onChange={handleAreaOfInterest}
+                />
                 <span>Python for Health Data</span>
               </label>
               <label className="flex items-center text-gray-950 space-x-2">
                 <input
                   type="checkbox"
                   value="Machine Learning & Deep Learning"
+                  checked={areaOfInterest.includes(
+                    "Machine Learning & Deep Learning"
+                  )}
+                  onChange={handleAreaOfInterest}
                 />
                 <span>Machine Learning & Deep Learning</span>
               </label>
               <label className="flex items-center text-gray-950 space-x-2">
-                <input type="checkbox" value="Medical AI" />
+                <input
+                  type="checkbox"
+                  value="Medical AI"
+                  checked={areaOfInterest.includes("Medical AI")}
+                  onChange={handleAreaOfInterest}
+                />
                 <span>Medical AI</span>
               </label>
               <label className="flex items-center text-gray-950 space-x-2">
-                <input type="checkbox" value="Data Visualization" />
+                <input
+                  type="checkbox"
+                  value="Data Visualization"
+                  checked={areaOfInterest.includes("Data Visualization")}
+                  onChange={handleAreaOfInterest}
+                />
                 <span>Data Visualization</span>
               </label>
               <label className="flex items-center text-gray-950 space-x-2">
-                <input type="checkbox" value="Other" />
+                <input
+                  type="checkbox"
+                  value="Other"
+                  checked={areaOfInterest.includes("Other")}
+                  onChange={handleAreaOfInterest}
+                />
                 <span>Other</span>
               </label>
               <input
                 type="text"
                 placeholder="Specify Other"
                 className="w-full border text-gray-950 border-gray-300 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                value={specifyOther}
+                onChange={(e) => setSpecifyOther(e.target.value)}
               />
             </div>
           </fieldset>
@@ -117,11 +244,23 @@ export default function CallToActionSection() {
             </legend>
             <div className="flex items-center space-x-4">
               <label className="flex items-center text-gray-950 space-x-2">
-                <input type="radio" name="experience" value="Yes" />
+                <input
+                  type="radio"
+                  name="experience"
+                  value="Yes"
+                  checked={experience === "Yes"}
+                  onChange={(e) => setExperience(e.target.value)}
+                />
                 <span>Yes</span>
               </label>
               <label className="flex items-center text-gray-950 space-x-2">
-                <input type="radio" name="experience" value="No" />
+                <input
+                  type="radio"
+                  name="experience"
+                  value="No"
+                  checked={experience === "No"}
+                  onChange={(e) => setExperience(e.target.value)}
+                />
                 <span>No</span>
               </label>
             </div>
@@ -129,6 +268,8 @@ export default function CallToActionSection() {
               rows="4"
               placeholder="Briefly describe your experience (optional)"
               className="w-full border text-gray-950 border-gray-300 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              value={experienceDescription}
+              onChange={(e) => setExperienceDescription(e.target.value)}
             ></textarea>
           </fieldset>
 
@@ -137,11 +278,15 @@ export default function CallToActionSection() {
             placeholder="Why do you want to join this bootcamp? (2–4 sentences)"
             className="w-full border text-gray-950 border-gray-300 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
             required
+            value={motivation}
+            onChange={(e) => setMotivation(e.target.value)}
           ></textarea>
 
           <select
             className="w-full border text-gray-950 border-gray-300 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
             required
+            value={referralSource}
+            onChange={(e) => setReferralSource(e.target.value)}
           >
             <option value="">How did you hear about Remedius AILab?</option>
             <option value="Social media">Social media</option>
@@ -153,7 +298,12 @@ export default function CallToActionSection() {
           </select>
 
           <label className="flex items-center text-gray-950 space-x-2">
-            <input type="checkbox" required />
+            <input
+              type="checkbox"
+              required
+              checked={contactAgreement}
+              onChange={(e) => setContactAgreement(e.target.checked)}
+            />
             <span>
               I agree to be contacted and receive updates from Remedius AILab.
             </span>
@@ -162,8 +312,9 @@ export default function CallToActionSection() {
           <button
             type="submit"
             className="w-full bg-[#0e6077] hover:bg-[#094b5b] text-white font-semibold py-3 rounded-md transition"
+            disabled={loading}
           >
-            APPLY TO JOIN BOOTCAMP
+            {loading ? "Submitting..." : "APPLY TO JOIN BOOTCAMP"}
           </button>
         </motion.form>
       </div>
