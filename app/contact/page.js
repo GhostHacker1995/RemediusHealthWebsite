@@ -7,6 +7,8 @@ import { FaXTwitter } from "react-icons/fa6";
 import AboutBanner from "@/components/Banner";
 
 import { useState, useRef } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function ContactPage() {
   const [sending, setSending] = useState(false);
@@ -29,17 +31,26 @@ export default function ContactPage() {
         formData
       );
       if (response.data.message === "Form submitted successfully.") {
-        alert("Your message has been sent successfully!");
+        toast.success("Your message has been sent successfully!", {
+          position: "top-center",
+          autoClose: 4000,
+        });
         if (formRef.current) {
           formRef.current.reset();
         }
       } else {
-        alert("Failed to send your message. Please try again later.");
+        toast.error("Failed to send your message. Please try again later.", {
+          position: "top-center",
+          autoClose: 4000,
+        });
       }
     } catch (error) {
       console.error("Error submitting form:", error);
       console.error("Error response:", error.response?.data);
-      alert("An error occurred. Please try again later.");
+      toast.error("An error occurred. Please try again later.", {
+        position: "top-center",
+        autoClose: 4000,
+      });
     } finally {
       setSending(false);
     }
@@ -47,6 +58,7 @@ export default function ContactPage() {
 
   return (
     <>
+      <ToastContainer />
       <AboutBanner
         title={"Contact Us"}
         description={<p>Get in touch with us for any inquiries or support.</p>}

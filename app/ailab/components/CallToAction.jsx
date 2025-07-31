@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function CallToActionSection() {
   // State for all fields
@@ -67,6 +69,10 @@ export default function CallToActionSection() {
       const data = await res.json();
       if (res.ok) {
         setSuccess("Your application was submitted successfully!");
+        toast.success("Your application was submitted successfully!", {
+          position: "top-center",
+          autoClose: 4000,
+        });
         setFullName("");
         setEmail("");
         setPhone("");
@@ -82,15 +88,24 @@ export default function CallToActionSection() {
         setContactAgreement(false);
       } else {
         setError(data.error || "Submission failed. Please try again.");
+        toast.error(data.error || "Submission failed. Please try again.", {
+          position: "top-center",
+          autoClose: 4000,
+        });
       }
     } catch (err) {
       setError("Network error. Please try again.");
+      toast.error("Network error. Please try again.", {
+        position: "top-center",
+        autoClose: 4000,
+      });
     }
     setLoading(false);
   };
 
   return (
     <section className="bg-gradient-to-br from-white to-gray-100 py-20 px-6">
+      <ToastContainer />
       <div className="max-w-4xl mx-auto text-center">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -100,7 +115,6 @@ export default function CallToActionSection() {
         >
           GET INVOLVED
         </motion.h2>
-
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -110,7 +124,6 @@ export default function CallToActionSection() {
           LEARN: Join the Bootcamp and start building your career in health AI.
           Register below to get started.
         </motion.p>
-
         <motion.form
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -118,8 +131,7 @@ export default function CallToActionSection() {
           className="bg-white shadow-xl rounded-xl p-8 max-w-2xl mx-auto space-y-6"
           onSubmit={handleSubmit}
         >
-          {success && <div className="text-green-600 mb-4">{success}</div>}
-          {error && <div className="text-red-600 mb-4">{error}</div>}
+          {/* Remove inline success/error messages, toast will handle */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <input
               type="text"
