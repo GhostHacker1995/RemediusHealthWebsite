@@ -47,8 +47,8 @@ export default function HowMuchItCosts() {
               {/* Circular Image */}
               <div className="relative w-32 h-32 rounded-full overflow-hidden border-4 border-[#0e6077] mb-4 shadow-md">
                 <img
-                  src={step?.itemIcon?.url}
-                  alt={step.itemName}
+                  src={step.icon}
+                  alt={step.title}
                   className="object-cover w-full h-full rounded-full"
                 />
                 <div
@@ -97,10 +97,10 @@ export default function HowMuchItCosts() {
 
               {/* Text */}
               <h4 className="text-lg font-semibold text-[#0e6077] mb-2">
-                {step.itemName}
+                {step.title}
               </h4>
               <p className="text-sm text-gray-600 max-w-xs">
-                {step?.priceAndDescription?.html.replace(/<[^>]*>/g, "")}
+                {step.description}
               </p>
             </div>
           ))}
