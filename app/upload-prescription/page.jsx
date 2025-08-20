@@ -137,8 +137,8 @@ export default function Page() {
   return (
     <>
       <div className="min-h-screen bg-gray-50">
-        <div className="mx-auto max-w-7xl px-4 py-8 lg:px-6">
-          <h1 className="text-lg font-semibold tracking-wide text-gray-800">
+        <div className="mx-auto max-w-7xl px-4 py-8 lg:px-6 pt-30">
+          <h1 className="text-lg font-semibold tracking-wide text-center text-gray-800">
             UPLOAD PRESCRIPTIONS
           </h1>
 
